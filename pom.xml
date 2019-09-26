@@ -11,7 +11,7 @@
     <groupId>com.parser.avito</groupId>
     <artifactId>avito-pareser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>avito-pareser</name>
+    <name>avito-search-api</name>
     <description>Avito search API</description>
 
     <properties>
