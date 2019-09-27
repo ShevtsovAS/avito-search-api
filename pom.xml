@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.parser.avito</groupId>
-    <artifactId>avito-pareser</artifactId>
+    <artifactId>avito-parser</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>avito-search-api</name>
     <description>Avito search API</description>

@@ -1,5 +1,6 @@
 package com.parser.avito.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,4 +17,10 @@ public class Item {
     private String dateTime;
     private String category;
     private String location;
+    private boolean isUpped;
+
+    @JsonIgnore
+    public boolean isUpped() {
+        return isUpped;
+    }
 }
