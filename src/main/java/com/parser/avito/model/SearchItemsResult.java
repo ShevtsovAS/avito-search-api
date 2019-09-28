@@ -15,8 +15,10 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SearchItemsResult {
     private String searchUrl;
-    private List<Item> items;
-    private int total;
     private boolean success;
+    private String query;
     private String errorMessage;
+    private Integer total;
+    private Integer count;
+    private List<Item> items;
 }

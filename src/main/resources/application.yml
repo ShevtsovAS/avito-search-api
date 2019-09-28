@@ -15,4 +15,5 @@ search-service:
     item-vip-list-attr: data-config
     item-is-upped-prop: isUpped
     next-page-class: js-pagination-next
-    max-pages: 1
+    time-out: 10000 #ms
+    item-count-class: page-title-count

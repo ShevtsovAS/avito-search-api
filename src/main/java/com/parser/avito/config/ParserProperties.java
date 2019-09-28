@@ -18,5 +18,6 @@ public class ParserProperties {
     private String itemVipListClass;
     private String itemVipListAttr;
     private String itemIsUppedProp;
-    private int maxPages;
+    private String itemCountClass;
+    private int timeOut;
 }
