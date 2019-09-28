@@ -15,4 +15,7 @@ public class SearchServiceProperties {
     private String host;
     private int port = 443;
     private Charset encode = StandardCharsets.UTF_8;
+    private int timeOut;
+    private String userAgent;
+    private String referer;
 }

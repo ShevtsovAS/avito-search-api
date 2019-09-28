@@ -4,16 +4,18 @@ search-service:
     host: www.avito.ru
     port: 443
     encode: UTF-8
-  parser:
-    item-table-class: item_table
-    item-link-class: item-description-title-link
-    item-date-class: js-item-date
-    item-date-attr: data-absolute-date
-    item-price-class: price
-    item-data-class: data
-    item-vip-list-class: vas-list-container
-    item-vip-list-attr: data-config
-    item-is-upped-prop: isUpped
-    next-page-class: js-pagination-next
     time-out: 10000 #ms
-    item-count-class: page-title-count
+    user-agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36'
+    referer: http://www.google.com
+  parser:
+    table-class: item_table
+    link-class: item-description-title-link
+    date-class: js-item-date
+    date-attr: data-absolute-date
+    price-class: price
+    data-class: data
+    vip-list-class: vas-list-container
+    vip-list-attr: data-config
+    is-upped-prop: isUpped
+    next-page-class: js-pagination-next
+    count-class: page-title-count

@@ -16,7 +16,7 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 public class ElementMapper {
 
     private static final String P_TAG = "p";
-    public static final String ABS_HREF_ATTR = "abs:href";
+    private static final String ABS_HREF_ATTR = "abs:href";
 
     private static ObjectMapper mapper = new ObjectMapper();
     private static ParserProperties parserProperties;
@@ -39,10 +39,10 @@ public class ElementMapper {
 
     private static boolean checkElementIsUpped(Element element) {
         String dataConfig = element
-                .getElementsByClass(parserProperties.getItemVipListClass())
-                .attr(parserProperties.getItemVipListAttr());
+                .getElementsByClass(parserProperties.getVipListClass())
+                .attr(parserProperties.getVipListAttr());
         try {
-            return !StringUtils.isEmpty(dataConfig) && mapper.readTree(dataConfig).get(parserProperties.getItemIsUppedProp()).asBoolean();
+            return !StringUtils.isEmpty(dataConfig) && mapper.readTree(dataConfig).get(parserProperties.getIsUppedProp()).asBoolean();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
             return false;
@@ -50,14 +50,14 @@ public class ElementMapper {
     }
 
     private static String getElementLocation(Element element) {
-        Elements data = element.getElementsByClass(parserProperties.getItemDataClass())
+        Elements data = element.getElementsByClass(parserProperties.getDataClass())
                 .first()
                 .getElementsByTag(P_TAG);
         return data.size() >= 2 ? data.get(1).text() : EMPTY;
     }
 
     private static String getElementCategory(Element element) {
-        return element.getElementsByClass(parserProperties.getItemDataClass())
+        return element.getElementsByClass(parserProperties.getDataClass())
                 .first()
                 .getElementsByTag(P_TAG)
                 .first()
@@ -66,26 +66,26 @@ public class ElementMapper {
 
     private static String getElementDateTime(Element element) {
         return element
-                .getElementsByClass(parserProperties.getItemDateClass())
-                .attr(parserProperties.getItemDateAttr())
+                .getElementsByClass(parserProperties.getDateClass())
+                .attr(parserProperties.getDateAttr())
                 .trim();
     }
 
     private static String getElementPrice(Element element) {
         return element
-                .getElementsByClass(parserProperties.getItemPriceClass())
+                .getElementsByClass(parserProperties.getPriceClass())
                 .text();
     }
 
     private static String getElementTitle(Element element) {
         return element
-                .getElementsByClass(parserProperties.getItemLinkClass())
+                .getElementsByClass(parserProperties.getLinkClass())
                 .text();
     }
 
     private static String getElementLink(Element element) {
         return element
-                .getElementsByClass(parserProperties.getItemLinkClass())
+                .getElementsByClass(parserProperties.getLinkClass())
                 .attr(ABS_HREF_ATTR);
     }
 

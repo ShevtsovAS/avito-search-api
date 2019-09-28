@@ -9,15 +9,14 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "search-service.parser")
 public class ParserProperties {
     private String nextPageClass;
-    private String itemTableClass;
-    private String itemLinkClass;
-    private String itemPriceClass;
-    private String itemDateClass;
-    private String itemDateAttr;
-    private String itemDataClass;
-    private String itemVipListClass;
-    private String itemVipListAttr;
-    private String itemIsUppedProp;
-    private String itemCountClass;
-    private int timeOut;
+    private String tableClass;
+    private String linkClass;
+    private String priceClass;
+    private String dateClass;
+    private String dateAttr;
+    private String dataClass;
+    private String vipListClass;
+    private String vipListAttr;
+    private String isUppedProp;
+    private String countClass;
 }

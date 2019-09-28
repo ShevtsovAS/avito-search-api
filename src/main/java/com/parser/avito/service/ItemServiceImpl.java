@@ -28,9 +28,6 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 @RequiredArgsConstructor
 public class ItemServiceImpl implements ItemService {
 
-    private static final String[] PATH_SEGMENTS = new String[]{"{city}", "{category}"};
-    private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.75 Safari/537.36";
-    private static final String REFERER = "http://www.google.com";
     private static final String QUERY_PARAM = "q";
     private static final String NOT_FOUND_MESSAGE = "Ничего не найденно!";
 
@@ -90,12 +87,12 @@ public class ItemServiceImpl implements ItemService {
     }
 
     private int getResultCount(Document document) {
-        return NumberUtils.ParseInt(document.getElementsByClass(parserProperties.getItemCountClass()).text());
+        return NumberUtils.ParseInt(document.getElementsByClass(parserProperties.getCountClass()).text());
     }
 
     private List<Item> getItems(Document document) {
         return document
-                .getElementsByClass(parserProperties.getItemTableClass())
+                .getElementsByClass(parserProperties.getTableClass())
                 .stream()
                 .map(ElementMapper::getItem)
                 .filter(item -> !item.isUpped())
@@ -105,9 +102,9 @@ public class ItemServiceImpl implements ItemService {
     private Document getDocument(String url) throws HttpStatusException {
         try {
             return Jsoup.connect(url)
-                    .userAgent(USER_AGENT)
-                    .referrer(REFERER)
-                    .timeout(parserProperties.getTimeOut())
+                    .userAgent(searchServiceProperties.getUserAgent())
+                    .referrer(searchServiceProperties.getReferer())
+                    .timeout(searchServiceProperties.getTimeOut())
                     .get();
         } catch (HttpStatusException e) {
             log.error(e.getMessage(), e);
@@ -123,8 +120,8 @@ public class ItemServiceImpl implements ItemService {
                 .scheme(searchServiceProperties.getScheme())
                 .host(searchServiceProperties.getHost())
                 .port(searchServiceProperties.getPort())
-                .pathSegment(PATH_SEGMENTS)
                 .queryParams(params)
+                .pathSegment("{city}", "{category}")
                 .buildAndExpand(city, category)
                 .encode(searchServiceProperties.getEncode())
                 .toString();
