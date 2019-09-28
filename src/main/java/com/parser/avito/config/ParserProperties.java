@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "search-service.parser")
 public class ParserProperties {
+    private String nextPageClass;
     private String itemTableClass;
     private String itemLinkClass;
-    private String itemLinkAttr;
     private String itemPriceClass;
     private String itemDateClass;
     private String itemDateAttr;
@@ -18,4 +18,5 @@ public class ParserProperties {
     private String itemVipListClass;
     private String itemVipListAttr;
     private String itemIsUppedProp;
+    private boolean getAllPages;
 }

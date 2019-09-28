@@ -16,6 +16,7 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 public class ElementMapper {
 
     private static final String P_TAG = "p";
+    public static final String ABS_HREF_ATTR = "abs:href";
 
     private static ObjectMapper mapper = new ObjectMapper();
     private static ParserProperties parserProperties;
@@ -85,7 +86,7 @@ public class ElementMapper {
     private static String getElementLink(Element element) {
         return element
                 .getElementsByClass(parserProperties.getItemLinkClass())
-                .attr(parserProperties.getItemLinkAttr());
+                .attr(ABS_HREF_ATTR);
     }
 
 

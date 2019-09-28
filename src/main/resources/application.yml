@@ -7,7 +7,6 @@ search-service:
   parser:
     item-table-class: item_table
     item-link-class: item-description-title-link
-    item-link-attr: abs:href
     item-date-class: js-item-date
     item-date-attr: data-absolute-date
     item-price-class: price
@@ -15,3 +14,5 @@ search-service:
     item-vip-list-class: vas-list-container
     item-vip-list-attr: data-config
     item-is-upped-prop: isUpped
+    next-page-class: js-pagination-next
+    get-all-pages: true
