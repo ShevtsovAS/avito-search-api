@@ -15,4 +15,4 @@ search-service:
     item-vip-list-attr: data-config
     item-is-upped-prop: isUpped
     next-page-class: js-pagination-next
-    get-all-pages: true
+    max-pages: 1
