@@ -5,7 +5,7 @@ import org.springframework.util.StringUtils;
 
 @UtilityClass
 public class NumberUtils {
-    public int ParseInt(String intString) {
+    public int parseInt(String intString) {
         String trimmed = StringUtils.trimAllWhitespace(intString);
         try {
             return Integer.parseInt(trimmed);

@@ -5,6 +5,7 @@ import com.parser.avito.config.SearchServiceProperties;
 import com.parser.avito.exception.ItemServiceException;
 import com.parser.avito.model.Item;
 import com.parser.avito.model.SearchItemsResult;
+import com.parser.avito.util.DateTimeUtil;
 import com.parser.avito.util.ElementMapper;
 import com.parser.avito.util.NumberUtils;
 import lombok.RequiredArgsConstructor;
@@ -87,7 +88,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     private int getResultCount(Document document) {
-        return NumberUtils.ParseInt(document.getElementsByClass(parserProperties.getCountClass()).text());
+        return NumberUtils.parseInt(document.getElementsByClass(parserProperties.getCountClass()).text());
     }
 
     private List<Item> getItems(Document document) {
@@ -96,7 +97,12 @@ public class ItemServiceImpl implements ItemService {
                 .stream()
                 .map(ElementMapper::getItem)
                 .filter(item -> !item.isUpped())
+                .peek(this::setAbsDateTime)
                 .collect(toList());
+    }
+
+    private void setAbsDateTime(Item item) {
+        item.setAbsDateTime(DateTimeUtil.parseDate(item.getDateTime()));
     }
 
     private Document getDocument(String url) throws HttpStatusException {

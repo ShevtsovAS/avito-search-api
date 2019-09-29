@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,6 +17,7 @@ public class Item {
     private String link;
     private String price;
     private String dateTime;
+    private LocalDateTime absDateTime;
     private String category;
     private String location;
     private boolean isUpped;
