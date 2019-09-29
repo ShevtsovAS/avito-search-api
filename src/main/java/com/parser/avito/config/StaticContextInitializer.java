@@ -1,5 +1,6 @@
 package com.parser.avito.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.parser.avito.util.ElementMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,11 @@ import javax.annotation.PostConstruct;
 public class StaticContextInitializer {
 
     private final ParserProperties parserProperties;
+    private final ObjectMapper objectMapper;
 
     @PostConstruct
     public void init() {
         ElementMapper.setParserProperties(parserProperties);
+        ElementMapper.setMapper(objectMapper);
     }
 }

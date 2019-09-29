@@ -18,11 +18,15 @@ public class ElementMapper {
     private static final String P_TAG = "p";
     private static final String ABS_HREF_ATTR = "abs:href";
 
-    private static ObjectMapper mapper = new ObjectMapper();
+    private static ObjectMapper mapper;
     private static ParserProperties parserProperties;
 
     public static void setParserProperties(ParserProperties parserProperties) {
         ElementMapper.parserProperties = parserProperties;
+    }
+
+    public static void setMapper(ObjectMapper mapper) {
+        ElementMapper.mapper = mapper;
     }
 
     public static Item getItem(Element element) {
