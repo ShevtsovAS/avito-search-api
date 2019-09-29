@@ -75,6 +75,7 @@
 
     <logger name="org.springframework.web" level="debug" additivity="false">
         <appender-ref ref="FILE-AUDIT"/>
+        <appender-ref ref="FILE-ERROR"/>
         <appender-ref ref="STDOUT"/>
     </logger>
 
