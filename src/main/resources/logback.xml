@@ -32,6 +32,12 @@
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
+
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
     </appender>
 
     <appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -50,6 +56,10 @@
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>10</maxHistory>
         </rollingPolicy>
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
     </appender>
 
     <root level="error">
@@ -59,6 +69,7 @@
 
     <logger name="com.parser.avito" level="debug" additivity="false">
         <appender-ref ref="FILE-AUDIT"/>
+        <appender-ref ref="FILE-ERROR"/>
         <appender-ref ref="STDOUT"/>
     </logger>
 
