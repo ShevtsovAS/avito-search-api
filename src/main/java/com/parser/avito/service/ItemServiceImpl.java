@@ -30,6 +30,7 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 public class ItemServiceImpl implements ItemService {
 
     private static final String QUERY_PARAM = "q";
+    private static final String SORT_PARAM = "s";
     private static final String NOT_FOUND_MESSAGE = "Ничего не найденно!";
 
     private final SearchServiceProperties searchServiceProperties;
@@ -122,6 +123,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     private String getSearchUrl(String city, String category, MultiValueMap<String, String> params) {
+        params.set(SORT_PARAM, "104"); // setting sort items always by time
         return UriComponentsBuilder.newInstance()
                 .scheme(searchServiceProperties.getScheme())
                 .host(searchServiceProperties.getHost())
