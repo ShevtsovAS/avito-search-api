@@ -19,3 +19,14 @@ search-service:
     is-upped-prop: isUpped
     next-page-class: js-pagination-next
     count-class: page-title-count
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GMAIL_USER}
+    password: ${GMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
